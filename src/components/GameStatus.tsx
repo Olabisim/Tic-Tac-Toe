@@ -7,21 +7,21 @@ let TagComponent = ({name, bgColor}:{name: string, bgColor?: string}) => (
 )
 
 let WinComponent = ({name, title}:{name:string, title:string} ) => (
-    <div className={`mx-2 w-full rounded border-2 border-[#008000] bg-[#0B6F27]/[0.4] p-2`}>
+    <div className={`mx-2 md:w-full rounded border-2 border-[#008000] bg-[#0B6F27]/[0.4] p-2 mb-4 md:mb-0`}>
           {/* little tag component */}
           <TagComponent name={name} bgColor={'#008000'} />
           <div className="text-center">
-            <p className='text-[32px] font-normal'>{title}</p>
+            <p className='text-[24px] md:text-[32px] font-normal'>{title}</p>
           </div>
     </div>
 )
 
 let LoseComponent = ({name, title}:{name:string, title:string} ) => (
-    <div className={`mx-2 w-full rounded border-2 border-['#FF0000'] bg-['#FF0000']/[0.4] p-2`}>
+    <div className={`mx-2 md:w-full rounded border-2 border-[#FF0000] bg-[#FF0000]/[0.4] p-2`}>
           {/* little tag component */}
           <TagComponent name={name} bgColor='#FF0000' />
           <div className="text-center">
-            <p className='text-[32px] font-normal'>{title}</p>
+            <p className='text-[24px] md:text-[32px] font-normal'>{title}</p>
           </div>
     </div>
 )

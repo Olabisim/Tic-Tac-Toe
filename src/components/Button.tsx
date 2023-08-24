@@ -8,7 +8,7 @@ interface InterfaceButton {
 
 export const Button = ({onClick, text}: InterfaceButton ) => {
     return (
-            <div className="px-12 py-6 text-white rounded" onClick={onClick}>
+            <div className="px-12 py-4 text-white rounded bg-[#000080]" onClick={onClick}>
                 {text}
             </div>
     )

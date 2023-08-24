@@ -1,7 +1,7 @@
 'use client'
 
 import { Draw, WinAndLose } from '@/components/GameStatus'
-// import Image from 'next/image'
+import Image from 'next/image'
 import {Button} from '../components/Button'
 
 export default function Home() {
@@ -9,9 +9,18 @@ export default function Home() {
   let handleClick = () => {} 
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col items-center ">
+        <div className='pt-10 pb-5'>
+          
+          <Image 
+              src="/../../arrow.png"
+              alt="arrow"
+              width={20}
+              height={20}
+            />
+        </div>
         <Button text="Start New Game" onClick={handleClick} />
-        <div>
+        <div className='pt-16'>
           <div>
             <WinAndLose name1="Player 1" name2='Player 2'  />
           </div>
