@@ -2,14 +2,14 @@
 
 
 interface InterfaceButton {
-    onClick: () => void,
+    onClick?: () => void,
     text: string
 }
 
 export const Button = ({onClick, text}: InterfaceButton ) => {
     return (
-            <div className="px-12 py-4 text-white rounded bg-[#000080]" onClick={onClick}>
+            <button className="px-12 py-4 text-white text-center rounded bg-[#000080]" onClick={onClick}>
                 {text}
-            </div>
+            </button>
     )
 }
