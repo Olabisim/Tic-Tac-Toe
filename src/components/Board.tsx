@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Square from "../components/Square";
 import { Player } from "@/intefaces";
 import { Button } from "./Button";
+import Link from 'next/link'
 
 function calculateWinner(squares: Player[]) {
     const lines = [
@@ -88,12 +89,16 @@ function Board () {
 
     return (
         <div>
+            <br />
+            <span className="pt-16 mt-10 text-[24px]">
+                    
+                {!winner && <p>Hey <span className="font-bold">{currentPlayer === 'O' ? currentPlayerName[0] : currentPlayerName[1]}</span> , it's your turn </p>}
 
-            {!winner && <p>Hey {currentPlayer === 'O' ? currentPlayerName[0] : currentPlayerName[1]}, it's your turn </p>}
+                {winner && winner !== "Draw" && <p>Congratulations <span className="font-bold"> {winner === 'O' ? currentPlayerName[0] : currentPlayerName[1]} !!!</span></p>}
 
-            {winner && winner !== "Draw" && <p>Congratulations {winner === 'O' ? currentPlayerName[0] : currentPlayerName[1]}</p>}
-            {winner && winner === "Draw" &&  <p> {currentPlayerName[0]} and {currentPlayerName[1]} draws</p>}
+                {winner && winner === "Draw" &&  <p> <span className="font-bold"> {currentPlayerName[0]} and {currentPlayerName[1]}</span> draws</p>}
 
+            </span>
 
             <div className="grid">
                 {Array(9).fill(null).map((_, i) => {
@@ -108,9 +113,13 @@ function Board () {
 
             <div className="pt-4">
 
-                <Button text="reset" onClick={reset} />
-                <Button text="Continue" onClick={reset} />
-                <Button text="Stop" onClick={reset} />
+                {/* <Button text="reset" onClick={reset} /> */}
+                <span className="pr-3">
+                    <Button text="Continue" onClick={reset} />
+                </span>
+                <Link href="/">
+                    <Button text="Stop"  />
+                </Link>
             </div>
              
         </div>
