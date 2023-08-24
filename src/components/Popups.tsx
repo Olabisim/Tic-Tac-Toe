@@ -1,6 +1,7 @@
 
 import { useForm } from 'react-hook-form'
 import { Button } from './Button'
+import Link from 'next/link'
 
 export const HomePagePopup = ({children}:any) => {
     
@@ -10,11 +11,9 @@ export const HomePagePopup = ({children}:any) => {
             lastName: '',
         }
     })
-
-    
     
     let handleClick = () => {
-
+        
     } 
 
     let onSubmit = (data:any) => {
@@ -43,8 +42,10 @@ export const HomePagePopup = ({children}:any) => {
                         {...register('lastName')}
                         required
                     />
+                    <Link href="/play">
                     
-                    <Button text="Start" />
+                     <Button text="Start" />
+                    </Link>
     
                 </form>
                     
