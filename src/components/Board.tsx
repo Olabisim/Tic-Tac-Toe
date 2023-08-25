@@ -5,6 +5,7 @@ import Square from "../components/Square";
 import { Player } from "@/intefaces";
 import { Button } from "./Button";
 import Link from 'next/link'
+import { useSelector } from "react-redux";
 
 function calculateWinner(squares: Player[]) {
     const lines = [
@@ -20,16 +21,16 @@ function calculateWinner(squares: Player[]) {
     for(let i = 0; i < lines.length; i++) {
         const [a,b,c] = lines[i];
 
-        console.log("squares[a]")
-        console.log(squares[a])
-        console.log("squares[b]")
-        console.log(squares[b])
-        console.log("squares[c]")
-        console.log(squares[c])
-        console.log("squares[a] && squares[a] === squares[b]")
-        console.log(`${squares[a]} && ${squares[a]} === ${squares[b]}`)
-        console.log("squares[a] === squares[c]")
-        console.log(`${squares[a]} === ${squares[c]}`)
+        // console.log("squares[a]")
+        // console.log(squares[a])
+        // console.log("squares[b]")
+        // console.log(squares[b])
+        // console.log("squares[c]")
+        // console.log(squares[c])
+        // console.log("squares[a] && squares[a] === squares[b]")
+        // console.log(`${squares[a]} && ${squares[a]} === ${squares[b]}`)
+        // console.log("squares[a] === squares[c]")
+        // console.log(`${squares[a]} === ${squares[c]}`)
 
         if(
             squares[a] && squares[a] === squares[b] &&
@@ -55,6 +56,11 @@ function Board () {
     const [currentPlayerName, setCurrentPlayerName] = useState<[String, String]>(["Dotun", "Mikel"])
 
     const [winner, setWinner] = useState<Player>(null)
+
+    
+    const { firstPlayersName, secondPlayersName } = useSelector((state):any => state.Players.playerNames)
+    console.log("state")
+    // console.log(playerState)
 
     function reset() {
         setSquares(Array(9).fill(null));
@@ -92,11 +98,11 @@ function Board () {
             <br />
             <span className="pt-16 mt-10 text-[24px]">
                     
-                {!winner && <p>Hey <span className="font-bold">{currentPlayer === 'O' ? currentPlayerName[0] : currentPlayerName[1]}</span> , it's your turn </p>}
+                {!winner && <p>Hey <span className="font-bold text-[#D4AF37]">{currentPlayer === 'O' && firstPlayersName}</span>  <span className="font-bold text-[#000080]">{currentPlayer === 'X' && secondPlayersName}</span> , it's your turn </p>}
 
-                {winner && winner !== "Draw" && <p>Congratulations <span className="font-bold"> {winner === 'O' ? currentPlayerName[0] : currentPlayerName[1]} !!!</span></p>}
+                {winner && winner !== "Draw" && <p>Congratulations <span className="font-bold"> {winner === 'O' ? firstPlayersName : secondPlayersName} !!!</span></p>}
 
-                {winner && winner === "Draw" &&  <p> <span className="font-bold"> {currentPlayerName[0]} and {currentPlayerName[1]}</span> draws</p>}
+                {winner && winner === "Draw" &&  <p> <span className="font-bold"> {firstPlayersName} and {secondPlayersName}</span> draws</p>}
 
             </span>
 

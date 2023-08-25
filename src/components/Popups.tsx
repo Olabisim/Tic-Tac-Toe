@@ -2,6 +2,8 @@
 import { useForm } from 'react-hook-form'
 import { Button } from './Button'
 import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { changePopupStatus, setPlayerNames } from '@/redux/PlayersSlice'
 
 export const HomePagePopup = ({children}:any) => {
     
@@ -11,41 +13,59 @@ export const HomePagePopup = ({children}:any) => {
             lastName: '',
         }
     })
+
+    let dispatch = useDispatch()
     
+
     let handleClick = () => {
         
     } 
 
-    let onSubmit = (data:any) => {
-        console.log("data")
-        console.log(data)
+    let onSubmit222 = (data:any) => {
+
+        console.log("onSubmit")
+
+        console.log("data[0]")
+        console.log(data.firstName)
+        console.log("data[1]")
+        console.log(data.lastName)
+        // router.push('/play')
+        dispatch(changePopupStatus(false))
+        console.log("this isi the object")
+        console.log({firstName: data.firstName, lastName:data.lastName})
+        dispatch(setPlayerNames({firstName: data.firstName, lastName:data.lastName}))
+
+        // .firstName;
+        //     state.playerNames.firstPlayersName = payload.secondName;
+
+
     }
 
     return(
         <div className='flex items-center justify-center h-full'>
-            <div className='bg-[#fff] w-[300px] h-[400px] rounded p-4 px-6'>
+            <div className='bg-[#fff] w-[300px] h-[340px] rounded p-4 px-6'>
                 {children}
     
                 <div className=' mb-6'>
-                <form onSubmit={handleSubmit(onSubmit)}>
-    
-                    <label className='pt-4 font-medium'>First Player Name</label>
+                <form onSubmit={handleSubmit(onSubmit222)}>
+                    <br />
+                    <label className='pt-4 font-medium'>Enter First Player Name</label>
                     <input 
                         className='bg-[#ccc]/[0.5] rounded w-full my-2 py-4 px-6'
                         {...register('firstName')}
                         required
                     />
                     <div className='pt-4'></div>
-                    <label className='pt-4 font-medium'>Second Player Name</label>
+                    <label className='pt-4 font-medium'>Enter Second Player Name</label>
                     <input 
                         className='bg-[#ccc]/[0.5] rounded w-full my-2 py-4 px-6 mb-6'
                         {...register('lastName')}
                         required
                     />
-                    <Link href="/play">
+                    {/* <Link href="/play"> */}
                     
-                     <Button text="Start" />
-                    </Link>
+                        <Button text="Start" />
+                    {/* </Link> */}
     
                 </form>
                     
