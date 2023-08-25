@@ -6,6 +6,7 @@ import { Player } from "@/intefaces";
 import { Button } from "./Button";
 import Link from 'next/link'
 import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 
 function calculateWinner(squares: Player[]) {
     const lines = [
@@ -58,7 +59,7 @@ function Board () {
     const [winner, setWinner] = useState<Player>(null)
 
     
-    const { firstPlayersName, secondPlayersName } = useSelector((state):any => state.Players.playerNames)
+    const { firstPlayersName, secondPlayersName } = useSelector((state: RootState) => state.Players.playerNames)
     console.log("state")
     // console.log(playerState)
 

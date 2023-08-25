@@ -3,6 +3,7 @@
 
 import Board from "@/components/Board"
 import { HomePagePopup } from "@/components/Popups"
+import { RootState } from "@/redux/store"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 
@@ -14,7 +15,7 @@ const Play = ( ) => {
 
   
     
-  const { popupStatus } = useSelector((state):any => state.Players)
+  const { popupStatus } = useSelector((state:RootState):any => state.Players)
   console.log("state")
   // console.log(playerState)
 

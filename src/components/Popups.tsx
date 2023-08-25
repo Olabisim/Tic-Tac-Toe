@@ -4,6 +4,7 @@ import { Button } from './Button'
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { changePopupStatus, setPlayerNames } from '@/redux/PlayersSlice'
+import { AppDispatch } from "@/redux/store";
 
 export const HomePagePopup = ({children}:any) => {
     
@@ -14,7 +15,7 @@ export const HomePagePopup = ({children}:any) => {
         }
     })
 
-    let dispatch = useDispatch()
+    let dispatch = useDispatch<AppDispatch>()
     
 
     let handleClick = () => {
