@@ -150,7 +150,6 @@ function Board () {
                 </Link>
             </div>
 
-
             <br />
             <br />
 
