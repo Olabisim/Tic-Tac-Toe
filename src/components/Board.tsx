@@ -7,6 +7,7 @@ import { Button } from "./Button";
 import Link from 'next/link'
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
+import { Draw, WinAndLose } from "./GameStatus";
 
 function calculateWinner(squares: Player[]) {
     const lines = [
@@ -45,9 +46,17 @@ function calculateWinner(squares: Player[]) {
 
 
 
+interface recordsInterface {
+    player1?: string,
+    player2?: string,
+    drawStatus?: boolean
+}
+
 
 
 function Board () {
+
+    const [records, setRecords] = useState<recordsInterface[]>([])
 
     const [squares, setSquares] = useState(Array(9).fill(null))
 
@@ -56,7 +65,7 @@ function Board () {
     )
     const [currentPlayerName, setCurrentPlayerName] = useState<[String, String]>(["Dotun", "Mikel"])
 
-    const [winner, setWinner] = useState<Player>(null)
+    const [winner, setWinner] = useState<Player >(null)
 
     
     const { firstPlayersName, secondPlayersName } = useSelector((state: RootState) => state.Players.playerNames)
@@ -94,6 +103,18 @@ function Board () {
         }
     })
 
+    useEffect(() => {
+
+        if(winner && winner !== "Draw") {
+            setRecords([{player1: winner === 'O' ? firstPlayersName : secondPlayersName, player2: winner !== 'O' ? firstPlayersName : secondPlayersName, drawStatus: false}, ...records ])
+        }
+        else if(winner && winner === "Draw") {
+            setRecords([{player1: firstPlayersName, player2: secondPlayersName, drawStatus: true}, ...records ])
+        }
+    }, [winner])
+
+    console.log(records)
+
     return (
         <div>
             <br />
@@ -127,6 +148,28 @@ function Board () {
                 <Link href="/">
                     <Button text="Stop"  />
                 </Link>
+            </div>
+
+
+            <br />
+            <br />
+
+            <div>
+
+                {records.map((e, i) => (
+                    <div className="my-4">
+
+                        <span>{i +1}</span>
+                        {
+                            e.drawStatus 
+                            ?
+                            <Draw name1={e.player1} name2={e.player2} />
+                            :
+                            <WinAndLose name1={e.player1} name2={e.player2} />
+                        }
+                        
+                    </div>
+                ))}
             </div>
              
         </div>

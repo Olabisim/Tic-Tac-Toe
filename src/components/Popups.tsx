@@ -38,8 +38,6 @@ export const HomePagePopup = ({children}:any) => {
 
         // .firstName;
         //     state.playerNames.firstPlayersName = payload.secondName;
-
-
     }
 
     return(

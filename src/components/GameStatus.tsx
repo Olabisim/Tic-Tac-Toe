@@ -2,11 +2,27 @@
 
 {/* win and lose component */}
 
-let TagComponent = ({name, bgColor}:{name: string, bgColor?: string}) => (
+interface playersNamesInterface {
+    
+    name1: string | undefined,
+    name2: string | undefined
+}
+interface playersNamesSupportComponentInterface {
+    
+    name: string | undefined,
+    title: string | undefined
+}
+interface playersNamesTagComponentInterface {
+    
+    name: string | undefined,
+    bgColor?: string | undefined
+}
+
+let TagComponent = ({name, bgColor}:playersNamesTagComponentInterface) => (
   <div className={`px-5 py-2 border-black rounded bg-[${bgColor ? bgColor : '#FFA500'}]`}>{name}</div>
 )
 
-let WinComponent = ({name, title}:{name:string, title:string} ) => (
+let WinComponent = ({name, title}:playersNamesSupportComponentInterface ) => (
     <div className={`mx-2 md:w-full rounded border-2 border-[#008000] bg-[#0B6F27]/[0.4] p-2 mb-4 md:mb-0`}>
           {/* little tag component */}
           <TagComponent name={name} bgColor={'#008000'} />
@@ -16,7 +32,7 @@ let WinComponent = ({name, title}:{name:string, title:string} ) => (
     </div>
 )
 
-let LoseComponent = ({name, title}:{name:string, title:string} ) => (
+let LoseComponent = ({name, title}:playersNamesSupportComponentInterface ) => (
     <div className={`mx-2 md:w-full rounded border-2 border-[#FF0000] bg-[#FF0000]/[0.4] p-2`}>
           {/* little tag component */}
           <TagComponent name={name} bgColor='#FF0000' />
@@ -26,19 +42,18 @@ let LoseComponent = ({name, title}:{name:string, title:string} ) => (
     </div>
 )
 
-export const WinAndLose = ({name1, name2}:{name1:string, name2:string} ) => {
+export const WinAndLose = ({name1, name2}:playersNamesInterface ) => {
     return (
           <div className='border-2 border-black block md:flex p-2 py-4 rounded w-full'>
               {/* win component */}
               <WinComponent title="Win" name={name1} />
               <LoseComponent title="Loses" name={name2} />
-              
           </div>
     )
 }
 
 
-export const Draw = ({name1, name2}:{name1:string, name2:string}) => {
+export const Draw = ({name1, name2}:playersNamesInterface) => {
     return (
         
           <div className='border-2 border-black block md:flex p-4 rounded my-6'>
