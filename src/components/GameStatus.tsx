@@ -46,7 +46,7 @@ export const WinAndLose = ({name1, name2}:playersNamesInterface ) => {
     return (
           <div className='border-2 border-black block md:flex p-2 py-4 rounded w-full'>
               {/* win component */}
-              <WinComponent title="Win" name={name1} />
+              <WinComponent title="Wins" name={name1} />
               <LoseComponent title="Loses" name={name2} />
           </div>
     )
