@@ -3,25 +3,25 @@
 const cors = require('cors')
 const express = require('express')
 const { default: AppError } = require('./utils/appError')
+const mainRoutes = require('./Routers/router')
 
 const app = express()
 
-
+// removing cors
 app.use(cors())
 app.options('*', cors())
 
+// body parser
 app.use(express.json())
 
-
-app.get("/", (req, res ) => {
-    console.log("this is the home URL")
-})
+// connected routes
+app.use('/', mainRoutes)
 
 
 app.all('*', (req, res, next) => {
-    const err = new AppError(`${req.originalUrl} not found`, 404);
+    // const err = new AppError(`${req.originalUrl} not found`, 404);
 
-    next(err)
+    // next(err)
 })
 
 module.exports = app;
