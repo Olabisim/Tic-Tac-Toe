@@ -5,7 +5,7 @@ const {Schema, model} = require('mongoose')
 const gamesSchema = new Schema({
     player1: String,
     player2: String,
-    drawStatus: String,
+    drawStatus: Boolean,
 })
 
 module.exports = model('games', gamesSchema)

@@ -2,6 +2,7 @@
 const express = require('express') 
 const router = express.Router() 
 const games = require('../models/games')
+const AppError = require('../utils/appError')
 
 router.get('/all', async (req, res) => {
 
@@ -17,6 +18,34 @@ router.get('/all', async (req, res) => {
         })
 })
 
+router.post('/newGame', async (req, res, next ) => {
+        const {player1, player2, drawStatus} = req.body;
 
+        // if(!player1 || !player2 || !drawStatus) next(new AppError('please fill all fields', 400))
+
+
+        // const newGame = new games({
+        //         player1,
+        //         player2,
+        //         drawStatus
+        // })
+
+        // await newGame.save()
+
+        const newGame = await games.create({
+                player1,
+                player2,
+                drawStatus
+        })
+
+        res.status(201).json({
+                status: true,
+                message: "data has been created successfulyy",
+                data: {
+                        newGame
+                }
+        })
+
+})
 
 module.exports = router
