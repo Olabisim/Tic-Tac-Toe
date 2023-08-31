@@ -17,8 +17,6 @@ const PlayersSlice = createSlice({
     reducers: {
         setPlayerNames(state, {payload}) {
             // {firstName, lastName}{firstName: data.firstName, lastName:data.lastName}
-            console.log(payload)
-            console.log("payload from setPlayerNames action")
             state.playerNames.firstPlayersName = payload.firstName;
             state.playerNames.secondPlayersName = payload.lastName;
         },

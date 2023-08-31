@@ -9,8 +9,6 @@ const port =  process.env.PORT || 5000
 
 dotenv.config({path: './.env'})
 
-console.log("process.env.connectionString")
-console.log(process.env.connectionString)
 
 mongoose.connect(`${process.env.connectionString}`, {
     useNewUrlParser: true,

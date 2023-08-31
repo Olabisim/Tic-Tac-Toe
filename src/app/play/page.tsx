@@ -16,9 +16,6 @@ const Play = ( ) => {
   
     
   const { popupStatus } = useSelector((state:RootState):any => state.Players)
-  console.log("state")
-  // console.log(playerState)
-
 
     return (
         <>

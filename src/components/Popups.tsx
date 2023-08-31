@@ -24,16 +24,7 @@ export const HomePagePopup = ({children}:any) => {
 
     let onSubmit222 = (data:any) => {
 
-        console.log("onSubmit")
-
-        console.log("data[0]")
-        console.log(data.firstName)
-        console.log("data[1]")
-        console.log(data.lastName)
-        // router.push('/play')
         dispatch(changePopupStatus(false))
-        console.log("this isi the object")
-        console.log({firstName: data.firstName, lastName:data.lastName})
         dispatch(setPlayerNames({firstName: data.firstName, lastName:data.lastName}))
 
         // .firstName;

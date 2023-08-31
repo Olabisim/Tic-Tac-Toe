@@ -22,18 +22,6 @@ function calculateWinner(squares: Player[]) {
     ];
     for(let i = 0; i < lines.length; i++) {
         const [a,b,c] = lines[i];
-
-        // console.log("squares[a]")
-        // console.log(squares[a])
-        // console.log("squares[b]")
-        // console.log(squares[b])
-        // console.log("squares[c]")
-        // console.log(squares[c])
-        // console.log("squares[a] && squares[a] === squares[b]")
-        // console.log(`${squares[a]} && ${squares[a]} === ${squares[b]}`)
-        // console.log("squares[a] === squares[c]")
-        // console.log(`${squares[a]} === ${squares[c]}`)
-
         if(
             squares[a] && squares[a] === squares[b] &&
             squares[a] === squares[c]
@@ -69,8 +57,6 @@ function Board () {
 
     
     const { firstPlayersName, secondPlayersName } = useSelector((state: RootState) => state.Players.playerNames)
-    console.log("state")
-    // console.log(playerState)
 
     function reset() {
         setSquares(Array(9).fill(null));
@@ -112,8 +98,6 @@ function Board () {
             setRecords([{player1: firstPlayersName, player2: secondPlayersName, drawStatus: true}, ...records ])
         }
     }, [winner])
-
-    console.log(records)
 
     return (
         <div>
